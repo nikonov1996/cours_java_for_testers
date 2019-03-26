@@ -4,21 +4,24 @@ public class HelloWorldText {
  public static void main(String[] args){
  String fio = "Nikonov Vladislav Alekseevich";
   Hi(fio);
-  double x = 8;
-  double y = 5.1;
-  System.out.println("Area of square, with side's size " + x + " = " + area(x) );
-  System.out.println("Area of square, with side's sizes " + x + " and " + y + " = " + area(x,y) );
+  Square square = new Square();
+  square.setSide(5);
+  Rectangle rectangle = new Rectangle();
+  rectangle.setDlina(5);
+  rectangle.setShirina(2);
+  System.out.println("Area of square, with side's size " + square.getSide() + " = " + area(square) );
+  System.out.println("Area of square, with side's sizes " + rectangle.getShirina() + " and " + rectangle.getDlina() + " = " + area(rectangle) );
 }
 
  public static void Hi (String user) {
   System.out.println("Hello, " + user + " !!!");
  }
 
- public static double area (double x){
-  return x*x;
+ public static double area (Square square){
+  return square.getSide()*square.getSide();
  }
 
- public static double area (double x, double y){
-  return x*y;
+ public static double area (Rectangle rectangle){
+  return rectangle.getDlina()*rectangle.getShirina();
  }
 }
