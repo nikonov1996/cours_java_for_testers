@@ -1,3 +1,11 @@
 apply plugin: 'java'
 apply plugin: 'application'
-mainClassName = "HelloWorldText"
+mainClassName = "com.course_java_for_testers.sandbox.HelloWorldText"
+
+repositories{
+    mavenCentral()
+}
+
+dependencies{
+    implementation 'org.testng:testng:6.14.3'
+}
