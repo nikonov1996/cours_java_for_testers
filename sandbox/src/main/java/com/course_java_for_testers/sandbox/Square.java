@@ -7,6 +7,10 @@ public class Square {
 
     }
 
+    public double area(){
+        return this.getSide()*this.getSide();
+    }
+
     public void setSide(double side) {
         this.side = side;
     }
@@ -14,4 +18,5 @@ public class Square {
     public double getSide() {
         return side;
     }
+
 }

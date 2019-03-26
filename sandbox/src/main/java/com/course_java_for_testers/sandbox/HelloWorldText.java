@@ -9,19 +9,12 @@ public class HelloWorldText {
   Rectangle rectangle = new Rectangle();
   rectangle.setDlina(5);
   rectangle.setShirina(2);
-  System.out.println("Area of square, with side's size " + square.getSide() + " = " + area(square) );
-  System.out.println("Area of square, with side's sizes " + rectangle.getShirina() + " and " + rectangle.getDlina() + " = " + area(rectangle) );
+  System.out.println("Area of square, with side's size " + square.getSide() + " = " + square.area() );
+  System.out.println("Area of square, with side's sizes " + rectangle.getShirina() + " and " + rectangle.getDlina() + " = " + rectangle.area() );
 }
 
  public static void Hi (String user) {
   System.out.println("Hello, " + user + " !!!");
  }
 
- public static double area (Square square){
-  return square.getSide()*square.getSide();
  }
-
- public static double area (Rectangle rectangle){
-  return rectangle.getDlina()*rectangle.getShirina();
- }
-}

@@ -7,12 +7,15 @@ public class Rectangle {
     public Rectangle(){
 
     }
+    public double area(){
+        return this.getDlina() * this.getShirina();
+    }
 
-    public double getDlina() {
+    public double getDlina(){
         return dlina;
     }
 
-    public double getShirina() {
+    public double getShirina(){
         return shirina;
     }
 
