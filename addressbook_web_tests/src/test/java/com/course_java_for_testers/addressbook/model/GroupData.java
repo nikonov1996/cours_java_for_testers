@@ -1,4 +1,4 @@
-package com.course_java_for_testers.addressbook;
+package com.course_java_for_testers.addressbook.model;
 
 public class GroupData {
     private final String grname;
