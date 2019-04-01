@@ -3,22 +3,17 @@ package com.course_java_for_testers.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class NavigationHelper {
-    private FirefoxDriver driver;
+public class NavigationHelper extends HelperBase {
 
     public NavigationHelper(FirefoxDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void gotoGroupPage() {
-        driver.findElement(By.linkText("groups")).click();
+        click(By.linkText("groups"));
     }
 
     public void gotoHomePage() {
-        driver.findElement(By.linkText("home page")).click();
-    }
-
-    public void gotoCreateNewContact() {
-        driver.findElement(By.linkText("add new")).click();
+        click(By.linkText("home page"));
     }
 }
