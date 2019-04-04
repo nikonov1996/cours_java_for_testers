@@ -4,18 +4,27 @@ import com.course_java_for_testers.addressbook.model.NewContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class NewContactHelper extends HelperBase {
+public class ContactHelper extends HelperBase {
 
-    public NewContactHelper(FirefoxDriver driver){
+    public ContactHelper(FirefoxDriver driver){
         super(driver);
     }
 
     public void submitNewContactCreation() {
-        click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]"));
+        click(By.name("submit"));
     }
 
     public void gotoCreateNewContact() {
-        click(By.linkText("add new"));
+        click(By.linkText("Добавить контакт"));
+    }
+
+    public void deleteSelectedContact() {
+        click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Выбрать все'])[1]/following::input[2]"));
+        confirmDeletion();
+    }
+
+    public void selectContact() {
+        click(By.name("selected[]"));
     }
 
     public void fillNewContactForm(NewContactData newContactData) {

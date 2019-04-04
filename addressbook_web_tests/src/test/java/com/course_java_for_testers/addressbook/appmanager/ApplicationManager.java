@@ -1,7 +1,5 @@
 package com.course_java_for_testers.addressbook.appmanager;
 
-import com.course_java_for_testers.addressbook.model.NewContactData;
-import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class ApplicationManager {
@@ -10,7 +8,7 @@ public class ApplicationManager {
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
     private SessionHelper sessionHelper;
-    private NewContactHelper newContactHelper;
+    private ContactHelper contactHelper;
 
     public void init() {
         System.setProperty("webdriver.gecko.driver", "C:\\SeleniumGecko\\geckodriver.exe");
@@ -21,7 +19,7 @@ public class ApplicationManager {
         groupHelper = new GroupHelper(driver);
         navigationHelper = new NavigationHelper(driver);
         sessionHelper = new SessionHelper(driver);
-        newContactHelper = new NewContactHelper(driver);
+        contactHelper = new ContactHelper(driver);
         sessionHelper.login("admin", "secret");
     }
 
@@ -37,7 +35,7 @@ public class ApplicationManager {
         return navigationHelper;
     }
 
-    public NewContactHelper getNewContactHelper(){
-        return newContactHelper;
+    public ContactHelper getContactHelper() {
+        return contactHelper;
     }
 }

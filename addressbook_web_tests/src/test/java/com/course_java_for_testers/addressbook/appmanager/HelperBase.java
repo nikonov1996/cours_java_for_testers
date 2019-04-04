@@ -19,4 +19,8 @@ public class HelperBase {
     protected void click(By locator) {
         driver.findElement(locator).click();
     }
+
+    protected  void confirmDeletion() {
+        driver.switchTo().alert().accept();
+    }
 }
