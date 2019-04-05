@@ -45,7 +45,6 @@ public class ApplicationManager {
     public void stop() {
         driver.close();
         driver.quit();
-        driver.dis
     }
 
     public GroupHelper getGroupHelper() {
