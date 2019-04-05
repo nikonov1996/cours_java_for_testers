@@ -2,11 +2,12 @@ package com.course_java_for_testers.addressbook.appmanager;
 
 import com.course_java_for_testers.addressbook.model.NewContactData;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class ContactHelper extends HelperBase {
 
-    public ContactHelper(FirefoxDriver driver){
+    public ContactHelper(WebDriver driver){
         super(driver);
     }
 

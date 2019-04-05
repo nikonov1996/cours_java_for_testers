@@ -1,21 +1,40 @@
 package com.course_java_for_testers.addressbook.appmanager;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.BrowserType;
+
 
 public class ApplicationManager {
 
-    FirefoxDriver driver;
+    WebDriver driver;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
     private SessionHelper sessionHelper;
     private ContactHelper contactHelper;
+    private String browser;
+    /*private final String FirefoxDriverPath = "C:\\WebDrivers\\geckodriver.exe";
+    private final String ChromeDriverPath = "C:\\WebDrivers\\chromedriver.exe";
+    private final String IEDriverPath = "C:\\WebDrivers\\IEDriverServer.exe";*/
+
+    public ApplicationManager(String browser) {
+        this.browser = browser;
+    }
 
     public void init() {
-        System.setProperty("webdriver.gecko.driver", "C:\\SeleniumGecko\\geckodriver.exe");
-        driver = new FirefoxDriver();
+
+        if (browser == BrowserType.FIREFOX) {
+            driver = new FirefoxDriver();
+        } else if (browser == BrowserType.CHROME) {
+            driver = new ChromeDriver();
+        } else {
+            driver = new InternetExplorerDriver();
+        }
+
         driver.manage().window().maximize();
-        String url = "http://localhost:8080/addressbook/group.php";
-        driver.get(url);
+        driver.navigate().to("http://localhost:8080/addressbook/group.php");
         groupHelper = new GroupHelper(driver);
         navigationHelper = new NavigationHelper(driver);
         sessionHelper = new SessionHelper(driver);
@@ -24,7 +43,9 @@ public class ApplicationManager {
     }
 
     public void stop() {
+        driver.close();
         driver.quit();
+        driver.dis
     }
 
     public GroupHelper getGroupHelper() {
