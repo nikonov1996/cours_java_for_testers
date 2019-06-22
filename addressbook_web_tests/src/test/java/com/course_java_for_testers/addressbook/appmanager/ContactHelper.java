@@ -16,11 +16,11 @@ public class ContactHelper extends HelperBase {
     }
 
     public void gotoCreateNewContact() {
-        click(By.linkText("Добавить контакт"));
+        click(By.linkText("add new"));
     }
 
     public void deleteSelectedContact() {
-        click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Выбрать все'])[1]/following::input[2]"));
+        click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Select all'])[1]/following::input[2]"));
         confirmDeletion();
     }
 
