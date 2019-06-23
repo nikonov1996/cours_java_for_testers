@@ -40,4 +40,13 @@ public class ContactHelper extends HelperBase {
         type(By.name("home"),newContactData.getHomePhone());
         type(By.name("email"),newContactData.getEmail());
     }
+
+    public void createContact(NewContactData contactdata) {
+        fillNewContactForm(contactdata);
+        submitNewContactCreation();
+    }
+
+    public boolean isContactPresent() {
+        return isElementPresent(By.name("selected[]"));
+    }
 }
