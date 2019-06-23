@@ -1,6 +1,7 @@
 package com.course_java_for_testers.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 public class HelperBase {
@@ -28,5 +29,14 @@ public class HelperBase {
 
     protected void confirmDeletion() {
         driver.switchTo().alert().accept();
+    }
+
+    public boolean isElementPresent( By locator) {
+        try {
+            driver.findElement(locator);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }
