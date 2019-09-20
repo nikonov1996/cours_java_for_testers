@@ -26,15 +26,17 @@ public class ApplicationManager {
     public void init() {
 
         if (browser == BrowserType.FIREFOX) {
+            System.setProperty("webdriver.gecko.driver", "C:\\Geckodriver\\geckodriver.exe");
             driver = new FirefoxDriver();
         } else if (browser == BrowserType.CHROME) {
+            System.setProperty("webdriver.chrome.driver", "C:\\Chromedriver\\chromedriver.exe");
             driver = new ChromeDriver();
         } else {
             driver = new InternetExplorerDriver();
         }
 
         driver.manage().window().maximize();
-        driver.navigate().to("http://localhost:8080/addressbook/group.php");
+        driver.navigate().to("http://localhost:122/addressbook");
         groupHelper = new GroupHelper(driver);
         navigationHelper = new NavigationHelper(driver);
         sessionHelper = new SessionHelper(driver);
