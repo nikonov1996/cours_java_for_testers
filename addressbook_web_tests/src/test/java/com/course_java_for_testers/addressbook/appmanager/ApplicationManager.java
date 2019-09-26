@@ -17,9 +17,7 @@ public class ApplicationManager {
     private SessionHelper sessionHelper;
     private ContactHelper contactHelper;
     private String browser;
-    /*private final String FirefoxDriverPath = "C:\\WebDrivers\\geckodriver.exe";
-    private final String ChromeDriverPath = "C:\\WebDrivers\\chromedriver.exe";
-    private final String IEDriverPath = "C:\\WebDrivers\\IEDriverServer.exe";*/
+
 
     public ApplicationManager(String browser) {
         this.browser = browser;

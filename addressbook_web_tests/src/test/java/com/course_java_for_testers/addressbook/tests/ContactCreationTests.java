@@ -17,7 +17,9 @@ public class ContactCreationTests extends TestBase {
                 "testcompany",
                 "808080808",
                 "80808080808",
-                "test@test"));
+                "test@test",
+                "test1"),
+                true); // подтверждение что контакт создается, а не модифицируется
         app.getNavigationHelper().gotoHomePage();
     }
 
