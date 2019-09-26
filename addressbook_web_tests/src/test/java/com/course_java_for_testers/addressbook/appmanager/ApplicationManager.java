@@ -32,6 +32,7 @@ public class ApplicationManager {
             driver = new FirefoxDriver();
         } else if (Objects.equals(browser, BrowserType.CHROME)) {
             System.setProperty("webdriver.chrome.driver", "C:\\Chromedriver\\chromedriver.exe");
+             //toDo как решить проблему веб-драйверов: прописывать в переменных средах не работает, добавлять в директорию проекта дурной тон,а прописывать явно как то стремно
             driver = new ChromeDriver();
         } else {
             driver = new InternetExplorerDriver();
