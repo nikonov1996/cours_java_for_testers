@@ -19,7 +19,8 @@ public class ContactDeletionTests extends TestBase {
                     "testcompany",
                     "808080808",
                     "80808080808",
-                    "test@test"));}
+                    "test@test",
+                    null), false);} // указываем, что это не создание "контакта"
         app.getNavigationHelper().gotoHomePage();
         app.getContactHelper().selectContact();
         app.getContactHelper().deleteSelectedContact();
