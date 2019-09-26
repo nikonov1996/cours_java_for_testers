@@ -6,6 +6,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 
+import java.util.Objects;
+
 
 public class ApplicationManager {
 
@@ -25,10 +27,10 @@ public class ApplicationManager {
 
     public void init() {
 
-        if (browser == BrowserType.FIREFOX) {
+        if (Objects.equals(browser, BrowserType.FIREFOX)) {
             System.setProperty("webdriver.gecko.driver", "C:\\Geckodriver\\geckodriver.exe");
             driver = new FirefoxDriver();
-        } else if (browser == BrowserType.CHROME) {
+        } else if (Objects.equals(browser, BrowserType.CHROME)) {
             System.setProperty("webdriver.chrome.driver", "C:\\Chromedriver\\chromedriver.exe");
             driver = new ChromeDriver();
         } else {
