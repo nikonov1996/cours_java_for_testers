@@ -2,6 +2,7 @@ package com.course_java_for_testers.addressbook.tests;
 
 import com.course_java_for_testers.addressbook.appmanager.HelperBase;
 import com.course_java_for_testers.addressbook.model.GroupData;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class GroupModificationTests extends TestBase {
@@ -9,6 +10,7 @@ public class GroupModificationTests extends TestBase {
     @Test
     public void testGroupModification() {
         app.getNavigationHelper().gotoGroupPage();
+        int before = app.getGroupHelper().getGroupCount();
         if (!app.getGroupHelper().isGroupPresent()){
             app.getGroupHelper().createGroup(new GroupData(
                     "test1",
@@ -24,5 +26,7 @@ public class GroupModificationTests extends TestBase {
 
         app.getGroupHelper().submitGroupModification();
         app.getGroupHelper().returntoGroupPage();
+        int after = app.getGroupHelper().getGroupCount();
+        Assert.assertEquals(after,before,"Колличество групп после модификации группы не должно меняться");
     }
 }

@@ -11,6 +11,7 @@ public class HelperBase {
         this.driver = driver;
     }
 
+    // метод ввода текста, по локатору
     protected void type(By locator, String text) {
         click(locator);
         if (text != null) {

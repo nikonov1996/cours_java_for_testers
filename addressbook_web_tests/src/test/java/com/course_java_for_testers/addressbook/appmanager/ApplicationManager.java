@@ -7,6 +7,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 
 public class ApplicationManager {
@@ -28,6 +29,7 @@ public class ApplicationManager {
         if (Objects.equals(browser, BrowserType.FIREFOX)) {
             System.setProperty("webdriver.gecko.driver", "C:\\Geckodriver\\geckodriver.exe");
             driver = new FirefoxDriver();
+            //driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         } else if (Objects.equals(browser, BrowserType.CHROME)) {
             System.setProperty("webdriver.chrome.driver", "C:\\Chromedriver\\chromedriver.exe");
              //toDo как решить проблему веб-драйверов: прописывать в переменных средах не работает, добавлять в директорию проекта дурной тон,а прописывать явно как то стремно
