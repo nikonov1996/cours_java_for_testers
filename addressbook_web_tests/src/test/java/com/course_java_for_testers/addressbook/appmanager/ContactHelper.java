@@ -1,10 +1,15 @@
 package com.course_java_for_testers.addressbook.appmanager;
 
+import com.course_java_for_testers.addressbook.model.GroupData;
 import com.course_java_for_testers.addressbook.model.NewContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
@@ -63,4 +68,26 @@ public class ContactHelper extends HelperBase {
     public int getContactCount() {
         return driver.findElements(By.name("selected[]")).size();
     }
+
+    public List<NewContactData> getContactList() {
+        List<NewContactData> contacts = new ArrayList<NewContactData>();
+//        List<WebElement> elements = driver.findElement(By.cssSelector("table.sortcompletecallback-applyZebra")).findElements(By.tagName("tr"));
+        List<WebElement> elements = driver.findElements(By.tagName("tr td[2]"));
+
+        for (WebElement elem: elements) {
+            String name = elem.getText();
+            NewContactData newContactData = new NewContactData(
+                    name,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null);
+            contacts.add(newContactData);
+        }
+        return contacts;}
 }

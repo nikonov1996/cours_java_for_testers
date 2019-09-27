@@ -3,7 +3,11 @@ package com.course_java_for_testers.addressbook.appmanager;
 import com.course_java_for_testers.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GroupHelper extends HelperBase {
 
@@ -59,5 +63,17 @@ public class GroupHelper extends HelperBase {
 
     public int getGroupCount() {
         return driver.findElements(By.name("selected[]")).size();
+    }
+
+    // метод пробегает по списку групп и вытаскивает инфу о группах (в данный момент имя группы)
+    public List<GroupData> getGroupList() {
+        List<GroupData> group = new ArrayList<GroupData>();
+        List<WebElement> elements = driver.findElements(By.cssSelector("span.group"));
+        for (WebElement elem: elements) {
+            String name = elem.getText();
+            GroupData groupData = new GroupData(name,null,null);
+            group.add(groupData);
+        }
+        return group;
     }
 }

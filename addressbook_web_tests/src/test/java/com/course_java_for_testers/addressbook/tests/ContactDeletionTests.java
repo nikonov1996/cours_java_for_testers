@@ -4,11 +4,12 @@ import com.course_java_for_testers.addressbook.model.NewContactData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class ContactDeletionTests extends TestBase {
 
-    @Test(enabled = false) //TODO ИСПРАВИТЬ: при дебаге тест проходит, при запуске падает, after равно before по ококончанию
+    @Test(enabled = true) //TODO ИСПРАВИТЬ: при дебаге тест проходит, при запуске падает, after равно before по ококончанию
     public void testContactDeletion() {
         app.getNavigationHelper().gotoHomePage();
 
@@ -28,13 +29,13 @@ public class ContactDeletionTests extends TestBase {
                     true);// указываем, что это создание "контакта"
             app.getNavigationHelper().gotoHomePage();}
 
-        int before = app.getContactHelper().getContactCount();
-        app.getContactHelper().selectContact(before-1);
+        List<NewContactData> before = app.getContactHelper().getContactList();
+        app.getContactHelper().selectContact(before.size()-2);
         app.getContactHelper().deleteSelectedContact();
         app.getNavigationHelper().gotoHomePage();
 
-        int after = app.getContactHelper().getContactCount();
-        Assert.assertEquals(after,before-1,"После удаления кол-во контактов должно быть меньше на единицу");
+        List<NewContactData> after = app.getContactHelper().getContactList();
+        Assert.assertEquals(after.size(),before.size()-1,"После удаления кол-во контактов должно быть меньше на единицу");
 
     }
 }
