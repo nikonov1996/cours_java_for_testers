@@ -27,9 +27,9 @@ public class ContactHelper extends HelperBase {
         confirmDeletion();
     }
 
-    public void selectContact() {
-        click(By.name("selected[]"));
-    }
+    //выбор контакта по индексу
+    public void selectContact(int index) {
+        driver.findElements(By.name("selected[]")).get(index).click(); }
 
     public void fillContactForm(NewContactData newContactData, boolean creation ) {
         type(By.name("firstname"),newContactData.getFirstname());
