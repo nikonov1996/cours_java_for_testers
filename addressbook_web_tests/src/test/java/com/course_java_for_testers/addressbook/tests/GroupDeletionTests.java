@@ -22,9 +22,10 @@ public class GroupDeletionTests extends TestBase {
         app.getGroupHelper().returntoGroupPage();
         List<GroupData> after = app.getGroupHelper().getGroupList();
         Assert.assertEquals(after.size(),before.size()-1,"После удаление количество групп должно быть меньше на единицу");
+
         // сравниваем списки групп до удаления и после удаления
         before.remove(before.size()-1);
-        Assert.assertEquals(after,before,"Список после удаления изменился.");
+        Assert.assertEquals(after,before,"Элементы списка групп (кроме удаляемого) не должны изменятся после удаления группы.");
 
     }
 }

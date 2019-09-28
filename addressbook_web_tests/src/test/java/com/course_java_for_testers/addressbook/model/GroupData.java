@@ -1,14 +1,24 @@
 package com.course_java_for_testers.addressbook.model;
 
+
 public class GroupData {
     private final String grname;
     private final String grheader;
     private final String grfooter;
+    private int id;
 
     public GroupData(String grname, String grheader, String grfooter) {
         this.grname = grname;
         this.grheader = grheader;
         this.grfooter = grfooter;
+        this.id = 0;
+    }
+
+    public GroupData(String grname, String grheader, String grfooter, int id) {
+        this.grname = grname;
+        this.grheader = grheader;
+        this.grfooter = grfooter;
+        this.id = id;
     }
 
     public String getGrname() {
@@ -23,10 +33,19 @@ public class GroupData {
         return grfooter;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "GroupData{" +
                 "grname='" + grname + '\'' +
+                ", id=" + id +
                 '}';
     }
 
@@ -37,11 +56,14 @@ public class GroupData {
 
         GroupData groupData = (GroupData) o;
 
+        if (id != groupData.id) return false;
         return grname != null ? grname.equals(groupData.grname) : groupData.grname == null;
     }
 
     @Override
     public int hashCode() {
-        return grname != null ? grname.hashCode() : 0;
+        int result = grname != null ? grname.hashCode() : 0;
+        result = 31 * result + id;
+        return result;
     }
 }
