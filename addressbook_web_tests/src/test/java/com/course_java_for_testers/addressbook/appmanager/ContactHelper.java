@@ -69,10 +69,10 @@ public class ContactHelper extends HelperBase {
         return driver.findElements(By.name("selected[]")).size();
     }
 
+
     public List<NewContactData> getContactList() {
         List<NewContactData> contacts = new ArrayList<NewContactData>();
-//        List<WebElement> elements = driver.findElement(By.cssSelector("table.sortcompletecallback-applyZebra")).findElements(By.tagName("tr"));
-        List<WebElement> elements = driver.findElements(By.tagName("tr td[2]"));
+        List<WebElement> elements = driver.findElements(By.cssSelector("tr td:nth-child(2)"));
 
         for (WebElement elem: elements) {
             String name = elem.getText();

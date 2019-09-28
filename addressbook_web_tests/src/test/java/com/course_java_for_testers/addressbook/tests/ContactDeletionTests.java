@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 
 public class ContactDeletionTests extends TestBase {
 
-    @Test(enabled = true) //TODO ИСПРАВИТЬ: при дебаге тест проходит, при запуске падает, after равно before по ококончанию
+    @Test(enabled = true) 
     public void testContactDeletion() {
         app.getNavigationHelper().gotoHomePage();
 
@@ -30,10 +30,10 @@ public class ContactDeletionTests extends TestBase {
             app.getNavigationHelper().gotoHomePage();}
 
         List<NewContactData> before = app.getContactHelper().getContactList();
-        app.getContactHelper().selectContact(before.size()-2);
+        app.getContactHelper().selectContact(before.size()-1);
         app.getContactHelper().deleteSelectedContact();
         app.getNavigationHelper().gotoHomePage();
-
+        app.sleepScript(5000);
         List<NewContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(),before.size()-1,"После удаления кол-во контактов должно быть меньше на единицу");
 
