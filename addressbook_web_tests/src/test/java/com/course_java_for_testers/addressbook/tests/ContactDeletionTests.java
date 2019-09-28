@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 
 public class ContactDeletionTests extends TestBase {
 
-    @Test(enabled = true) 
+    @Test(enabled = true)
     public void testContactDeletion() {
         app.getNavigationHelper().gotoHomePage();
 
