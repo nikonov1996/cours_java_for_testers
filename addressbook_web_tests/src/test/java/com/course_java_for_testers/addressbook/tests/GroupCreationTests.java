@@ -12,24 +12,17 @@ public class GroupCreationTests extends TestBase {
     @Test
     public void testGroupCreation() {
         app.getNavigationHelper().gotoGroupPage();
-        List<GroupData> before = app.getGroupHelper().getGroupList();
+        List<GroupData> listBefore = app.getGroupHelper().getGroupList();
         GroupData createdGroup = new GroupData("test1", "test2", "test3");
         app.getGroupHelper().createGroup(createdGroup);
-        List<GroupData> after = app.getGroupHelper().getGroupList();
-        Assert.assertEquals(after.size(), before.size() + 1, "Количество групп после создания должно быть больше чем до создания.");
+        List<GroupData> listAfter = app.getGroupHelper().getGroupList();
+        Assert.assertEquals(listAfter.size(), listBefore.size() + 1, "Количество групп после создания должно быть больше чем до создания.");
 
         // Сравнение элементов списков групп после создания новой группы
+        createdGroup.setId(listAfter.stream().max((o1, o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId());
+        listBefore.add(createdGroup);
+        Assert.assertEquals(new HashSet<>(listAfter), new HashSet<>(listBefore), "Элементы  списка (кроме созданного)не должны быть изменены после создания группы");
 
-        //находим максимальный id группы
-        int max = 0;
-        for (GroupData g : after) {
-            if (g.getId() > max) {
-                max = g.getId();
-            }
-        }
 
-        createdGroup.setId(max);
-        before.add(createdGroup);
-        Assert.assertEquals(new HashSet<>(after), new HashSet<>(before), "Элементы  списка (кроме созданного)не должны быть изменены после создания группы");
     }
 }
