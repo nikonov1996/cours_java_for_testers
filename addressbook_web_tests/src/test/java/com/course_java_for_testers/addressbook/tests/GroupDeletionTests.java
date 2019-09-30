@@ -24,14 +24,12 @@ public class GroupDeletionTests extends TestBase {
         ensurePreconditions();
         List<GroupData> groupListBefore = app.getGroupHelper().getGroupList();
         int index = groupListBefore.size()-1 ;
-        app.getGroupHelper().selectGroup(index); //выбрали последний элемент из списка
-        app.getGroupHelper().deleteSelectedGroups();
-        app.getGroupHelper().returntoGroupPage();
+        app.getGroupHelper().deleteGroup(index);
         List<GroupData> groupListAfter = app.getGroupHelper().getGroupList();
         Assert.assertEquals(groupListAfter.size(),groupListBefore.size()-1,"После удаление количество групп должно быть меньше на единицу");
 
         // сравниваем списки групп до удаления и после удаления
-        groupListBefore.remove(groupListBefore.size()-1);
+        groupListBefore.remove(index);
 
         Comparator<? super GroupData> byId = (g1,g2)->Integer.compare(g1.getId(),g2.getId());
         groupListBefore.sort(byId);
@@ -39,4 +37,5 @@ public class GroupDeletionTests extends TestBase {
         Assert.assertEquals(groupListAfter,groupListBefore,"Элементы списка групп (кроме удаляемого) не должны изменятся после удаления группы.");
 
     }
+
 }

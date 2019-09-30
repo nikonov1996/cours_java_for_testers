@@ -64,6 +64,12 @@ public class GroupHelper extends HelperBase {
         returntoGroupPage();
     }
 
+    public void deleteGroup(int index) {
+        selectGroup(index); //выбрали последний элемент из списка
+        deleteSelectedGroups();
+        returntoGroupPage();
+    }
+
     public boolean isGroupPresent() {
         return isElementPresent(By.name("selected[]"));
     }
