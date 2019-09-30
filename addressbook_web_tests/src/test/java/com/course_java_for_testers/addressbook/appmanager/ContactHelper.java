@@ -75,10 +75,10 @@ public class ContactHelper extends HelperBase {
         List<WebElement> elements = driver.findElements(By.cssSelector("tr td:nth-child(2)"));
 
         for (WebElement elem: elements) {
-            String name = elem.getText();
+            String lastname = elem.getText();
             NewContactData newContactData = new NewContactData(
-                    name,
                     null,
+                    lastname,
                     null,
                     null,
                     null,

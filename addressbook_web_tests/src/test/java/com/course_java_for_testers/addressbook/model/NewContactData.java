@@ -62,4 +62,26 @@ public class NewContactData {
     }
 
     public String getGroup() { return group; }
+
+    @Override
+    public String toString() {
+        return "NewContactData{" +
+                "lastname='" + lastname + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        NewContactData that = (NewContactData) o;
+
+        return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return lastname != null ? lastname.hashCode() : 0;
+    }
 }
