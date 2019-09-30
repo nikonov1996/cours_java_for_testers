@@ -15,10 +15,10 @@ public class GroupModificationTests extends TestBase {
     public void ensurePreconditions() {
         app.getNavigationHelper().gotoGroupPage();
         if (!app.getGroupHelper().isGroupPresent()) {
-            app.getGroupHelper().createGroup(new GroupData(
-                    "test1",
-                    "test2",
-                    "test3"));
+            app.getGroupHelper().createGroup(new GroupData()
+                    .withName("test1")
+                    .withHeader("test2")
+                    .withFooter("test3"));
         }
     }
 
@@ -26,12 +26,12 @@ public class GroupModificationTests extends TestBase {
     public void testGroupModification() {
         List<GroupData> groupListBefore = app.getGroupHelper().getGroupList();
         int index = groupListBefore.size() - 1;
-        GroupData modificatedGroup = new GroupData(
-                "test1",
-                "test2",
-                "test3",
-                groupListBefore.get(index).getId());
-        app.getGroupHelper().modifyGroup(modificatedGroup,index);
+        GroupData modificatedGroup = new GroupData()
+                .withName("test1")
+                .withHeader("test2")
+                .withFooter("test3")
+                .withId(groupListBefore.get(index).getId());
+        app.getGroupHelper().modifyGroup(modificatedGroup, index);
         List<GroupData> groupListAfter = app.getGroupHelper().getGroupList();
         Assert.assertEquals(groupListAfter.size(), groupListBefore.size(), "Колличество групп после модификации группы не должно меняться");
 
@@ -39,10 +39,10 @@ public class GroupModificationTests extends TestBase {
         groupListBefore.remove(index);
         groupListBefore.add(modificatedGroup);
 
-        Comparator<? super GroupData> byId =(g1, g2)-> Integer.compare(g1.getId(),g2.getId());
+        Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
         groupListBefore.sort(byId);
         groupListAfter.sort(byId);
-        Assert.assertEquals(groupListAfter,groupListBefore,"Элементы  списка (кроме модифицируемого)не должны быть изменены после модификации группы");
+        Assert.assertEquals(groupListAfter, groupListBefore, "Элементы  списка (кроме модифицируемого)не должны быть изменены после модификации группы");
 
     }
 

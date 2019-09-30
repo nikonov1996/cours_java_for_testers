@@ -15,17 +15,17 @@ public class ContactDeletionTests extends TestBase {
 
         if (!app.getContactHelper().isContactPresent()){
             app.getContactHelper().gotoCreateNewContact();
-            app.getContactHelper().createContact(new NewContactData(
-                    "testname",
-                    "testlastname",
-                    "testnickname",
-                    "testtitle",
-                    "testaddress",
-                    "testcompany",
-                    "808080808",
-                    "80808080808",
-                    "test@test",
-                    "test1"),
+            app.getContactHelper().createContact(new NewContactData()
+                            .withFirstname("testname")
+                            .withLastname("testlastname")
+                            .withNickname("testnickname")
+                            .withTitle("testtitle")
+                            .withAddress("testaddress")
+                            .withCompany("testcompany")
+                            .withHomePhone("54872")
+                            .withMobilePhone("89135876592")
+                            .withEmail("test@test")
+                            .withGroup("test1"),
                     true);// указываем, что это создание "контакта"
             app.getNavigationHelper().gotoHomePage();}
 

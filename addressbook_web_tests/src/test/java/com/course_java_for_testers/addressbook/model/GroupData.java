@@ -2,25 +2,10 @@ package com.course_java_for_testers.addressbook.model;
 
 
 public class GroupData {
-    private final String grname;
-    private final String grheader;
-    private final String grfooter;
-    private int id;
-
-
-    public GroupData(String grname, String grheader, String grfooter) {
-        this.grname = grname;
-        this.grheader = grheader;
-        this.grfooter = grfooter;
-        this.id = Integer.MAX_VALUE;
-    }
-
-    public GroupData(String grname, String grheader, String grfooter, int id) {
-        this.grname = grname;
-        this.grheader = grheader;
-        this.grfooter = grfooter;
-        this.id = id;
-    }
+    private String grname;
+    private String grheader;
+    private String grfooter;
+    private int id = Integer.MAX_VALUE;;
 
     public String getGrname() {
         return grname;
@@ -36,8 +21,24 @@ public class GroupData {
 
     public int getId() { return id; }
 
-    public void setId(int id) {
+    public GroupData withId(int id) {
         this.id = id;
+        return this;
+    }
+
+    public GroupData withName(String grname) {
+        this.grname = grname;
+        return this;
+    }
+
+    public GroupData withHeader(String grheader) {
+        this.grheader = grheader;
+        return this;
+    }
+
+    public GroupData withFooter(String grfooter) {
+        this.grfooter = grfooter;
+        return this;
     }
 
     @Override

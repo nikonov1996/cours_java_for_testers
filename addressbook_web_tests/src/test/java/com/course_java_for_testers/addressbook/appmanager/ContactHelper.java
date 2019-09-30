@@ -76,18 +76,7 @@ public class ContactHelper extends HelperBase {
 
         for (WebElement elem: elements) {
             String lastname = elem.getText();
-            NewContactData newContactData = new NewContactData(
-                    null,
-                    lastname,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null);
-            contacts.add(newContactData);
+            contacts.add(new NewContactData().withLastname(lastname));
         }
         return contacts;}
 }

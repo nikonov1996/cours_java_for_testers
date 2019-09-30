@@ -14,7 +14,10 @@ public class GroupCreationTests extends TestBase {
     public void testGroupCreation() {
         app.getNavigationHelper().gotoGroupPage();
         List<GroupData> groupListBefore = app.getGroupHelper().getGroupList();
-        GroupData createdGroup = new GroupData("test1", "test2", "test3");
+        GroupData createdGroup = new GroupData()
+                .withName("test1")
+                .withHeader("test2")
+                .withFooter("test3");
         app.getGroupHelper().createGroup(createdGroup);
         List<GroupData> groupListAfter = app.getGroupHelper().getGroupList();
         Assert.assertEquals(groupListAfter.size(), groupListBefore.size() + 1, "Количество групп после создания должно быть больше чем до создания.");
