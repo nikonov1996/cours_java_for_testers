@@ -7,11 +7,12 @@ public class GroupData {
     private final String grfooter;
     private int id;
 
+
     public GroupData(String grname, String grheader, String grfooter) {
         this.grname = grname;
         this.grheader = grheader;
         this.grfooter = grfooter;
-        this.id = 0;
+        this.id = Integer.MAX_VALUE;
     }
 
     public GroupData(String grname, String grheader, String grfooter, int id) {
@@ -56,14 +57,11 @@ public class GroupData {
 
         GroupData groupData = (GroupData) o;
 
-        if (id != groupData.id) return false;
         return grname != null ? grname.equals(groupData.grname) : groupData.grname == null;
     }
 
     @Override
     public int hashCode() {
-        int result = grname != null ? grname.hashCode() : 0;
-        result = 31 * result + id;
-        return result;
+        return grname != null ? grname.hashCode() : 0;
     }
 }
