@@ -8,17 +8,23 @@ import java.util.Comparator;
 import java.util.List;
 
 public class GroupDeletionTests extends TestBase {
-    @Test
-    public void testGroupDeletion() {
-        app.getNavigationHelper().gotoGroupPage();
 
-        if (!app.getGroupHelper().isGroupPresent()){
+    public void ensurePreconditions() {
+        app.getNavigationHelper().gotoGroupPage();
+        if (!app.getGroupHelper().isGroupPresent()) {
             app.getGroupHelper().createGroup(new GroupData(
                     "test1",
                     "test2",
-                    "test3"));}
+                    "test3"));
+        }
+    }
+
+    @Test
+    public void testGroupDeletion() {
+        ensurePreconditions();
         List<GroupData> groupListBefore = app.getGroupHelper().getGroupList();
-        app.getGroupHelper().selectGroup(groupListBefore.size()-1); //выбрали последний элемент из списка
+        int index = groupListBefore.size()-1 ;
+        app.getGroupHelper().selectGroup(index); //выбрали последний элемент из списка
         app.getGroupHelper().deleteSelectedGroups();
         app.getGroupHelper().returntoGroupPage();
         List<GroupData> groupListAfter = app.getGroupHelper().getGroupList();
