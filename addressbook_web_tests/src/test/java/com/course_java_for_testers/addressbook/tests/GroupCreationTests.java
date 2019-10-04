@@ -7,29 +7,33 @@ import org.testng.annotations.Test;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupCreationTests extends TestBase {
 
     @Test
     public void testGroupCreation() {
         app.getNavigationHelper().gotoGroupPage();
-        List<GroupData> groupListBefore = app.getGroupHelper().getGroupList();
+        Set<GroupData> groupListBefore = app.getGroupHelper().getGroupSet();
         GroupData createdGroup = new GroupData()
                 .withName("test1")
                 .withHeader("test2")
                 .withFooter("test3");
         app.getGroupHelper().createGroup(createdGroup);
-        List<GroupData> groupListAfter = app.getGroupHelper().getGroupList();
-        Assert.assertEquals(groupListAfter.size(), groupListBefore.size() + 1, "Количество групп после создания должно быть больше чем до создания.");
+        Set<GroupData> groupListAfter = app.getGroupHelper().getGroupSet();
+        Assert.assertEquals(
+                groupListAfter.size(),
+                groupListBefore.size() + 1,
+                "Количество групп после создания должно быть больше чем до создания.");
 
         // Сравнение элементов списков групп после создания новой группы
-      //  createdGroup.setId(groupListAfter.stream().max((o1, o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId());
+        createdGroup.withId(groupListAfter.stream().mapToInt((g) -> g.getId()).max().getAsInt());
         groupListBefore.add(createdGroup);
 
-        Comparator<? super GroupData> byId = (g1,g2)->Integer.compare(g1.getId(),g2.getId());
-        groupListBefore.sort(byId);
-        groupListAfter.sort(byId);
-        Assert.assertEquals(groupListAfter, groupListBefore, "Элементы  списка (кроме созданного)не должны быть изменены после создания группы");
+        Assert.assertEquals(
+                groupListAfter,
+                groupListBefore,
+                "Элементы  списка (кроме созданного)не должны быть изменены после создания группы");
 
 
     }

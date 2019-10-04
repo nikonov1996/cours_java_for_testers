@@ -6,7 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupHelper extends HelperBase {
 
@@ -37,9 +39,9 @@ public class GroupHelper extends HelperBase {
     }
 
     //выбор группы по индексу
-    public void selectGroup(int index) {
-        driver.findElements(By.name("selected[]")).get(index).click();
-    }
+    public void selectGroup(int index) { driver.findElements(By.name("selected[]")).get(index).click(); }
+
+    private void selectGroupById(int id) { driver.findElement(By.cssSelector("input[value='"+ id +"']")).click(); }
 
     public void initGroupModification() {
         click(By.name("edit"));
@@ -56,8 +58,8 @@ public class GroupHelper extends HelperBase {
         returntoGroupPage();
     }
 
-    public void modifyGroup(GroupData group, int index) {
-        selectGroup(index); // выбрали последний элемент из списка
+    public void modifyGroup(GroupData group) {
+        selectGroupById(group.getId()); // выбрали  элемент из списка по id
         initGroupModification();
         fillGroupForm(group);
         submitGroupModification();
@@ -66,6 +68,12 @@ public class GroupHelper extends HelperBase {
 
     public void deleteGroup(int index) {
         selectGroup(index); //выбрали последний элемент из списка
+        deleteSelectedGroups();
+        returntoGroupPage();
+    }
+
+    public void deleteGroupById (GroupData group){
+        selectGroupById(group.getId()); //выбрали группу по id
         deleteSelectedGroups();
         returntoGroupPage();
     }
@@ -81,6 +89,17 @@ public class GroupHelper extends HelperBase {
     // метод пробегает по списку групп и вытаскивает инфу о группах (в данный момент имя группы)
     public List<GroupData> getGroupList() {
         List<GroupData> group = new ArrayList<GroupData>();
+        List<WebElement> elements = driver.findElements(By.cssSelector("span.group"));
+        for (WebElement elem: elements) {
+            String name = elem.getText();
+            int id = Integer.parseInt(elem.findElement(By.tagName("input")).getAttribute("value"));
+            group.add(new GroupData().withName(name).withId(id));
+        }
+        return group;
+    }
+
+    public Set<GroupData> getGroupSet() {
+        Set<GroupData> group = new HashSet<GroupData>();
         List<WebElement> elements = driver.findElements(By.cssSelector("span.group"));
         for (WebElement elem: elements) {
             String name = elem.getText();

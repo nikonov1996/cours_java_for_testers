@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupModificationTests extends TestBase {
 
@@ -24,25 +25,30 @@ public class GroupModificationTests extends TestBase {
 
     @Test
     public void testGroupModification() {
-        List<GroupData> groupListBefore = app.getGroupHelper().getGroupList();
-        int index = groupListBefore.size() - 1;
-        GroupData modificatedGroup = new GroupData()
+        Set<GroupData> groupListBefore = app.getGroupHelper().getGroupSet();
+        GroupData groupBeforeModify = groupListBefore.iterator().next();
+        GroupData groupAfterModify = new GroupData()
+                .withId(groupBeforeModify.getId())
                 .withName("test1")
                 .withHeader("test2")
-                .withFooter("test3")
-                .withId(groupListBefore.get(index).getId());
-        app.getGroupHelper().modifyGroup(modificatedGroup, index);
-        List<GroupData> groupListAfter = app.getGroupHelper().getGroupList();
-        Assert.assertEquals(groupListAfter.size(), groupListBefore.size(), "Колличество групп после модификации группы не должно меняться");
+                .withFooter("test3");
+
+        app.getGroupHelper().modifyGroup(groupAfterModify);
+        Set<GroupData> groupListAfter = app.getGroupHelper().getGroupSet();
+
+        Assert.assertEquals(
+                groupListAfter.size(),
+                groupListBefore.size(),
+                "Колличество групп после модификации группы не должно меняться");
 
         // сравнение элементов списка групп после модификации
-        groupListBefore.remove(index);
-        groupListBefore.add(modificatedGroup);
+        groupListBefore.remove(groupBeforeModify);
+        groupListBefore.add(groupAfterModify);
 
-        Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
-        groupListBefore.sort(byId);
-        groupListAfter.sort(byId);
-        Assert.assertEquals(groupListAfter, groupListBefore, "Элементы  списка (кроме модифицируемого)не должны быть изменены после модификации группы");
+        Assert.assertEquals(
+                groupListAfter,
+                groupListBefore,
+                "Элементы  списка (кроме модифицируемого)не должны быть изменены после модификации группы");
 
     }
 
