@@ -1,6 +1,8 @@
 package com.course_java_for_testers.addressbook.tests;
 
 import com.course_java_for_testers.addressbook.model.GroupData;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -23,7 +25,6 @@ public class GroupDeletionTests extends TestBase {
     @Test
     public void testGroupDeletion() {
         ensurePreconditions();
-
         Set<GroupData> groupListBefore = app.getGroupHelper().getGroupSet();
         GroupData deletedGroup = groupListBefore.iterator().next(); // выбирает любую группу из списка
         app.getGroupHelper().deleteGroupById(deletedGroup);

@@ -1,6 +1,8 @@
 package com.course_java_for_testers.addressbook.tests;
 
 import com.course_java_for_testers.addressbook.model.GroupData;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -8,6 +10,9 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupCreationTests extends TestBase {
 
@@ -30,11 +35,11 @@ public class GroupCreationTests extends TestBase {
         createdGroup.withId(groupListAfter.stream().mapToInt((g) -> g.getId()).max().getAsInt());
         groupListBefore.add(createdGroup);
 
+      //  assertThat(groupListAfter, equalTo(groupListBefore)); // библиотека hamcrest
         Assert.assertEquals(
                 groupListAfter,
                 groupListBefore,
                 "Элементы  списка (кроме созданного)не должны быть изменены после создания группы");
-
 
     }
 }
