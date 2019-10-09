@@ -52,14 +52,6 @@ public class ApplicationManager {
         driver.quit();
     }
 
-    public void sleepScript(int millisec ){
-        try {
-            Thread.sleep(millisec);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     public GroupHelper getGroupHelper() {
         return groupHelper;
     }

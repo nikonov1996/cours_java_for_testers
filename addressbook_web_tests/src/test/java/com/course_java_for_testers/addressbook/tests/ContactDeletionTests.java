@@ -2,6 +2,7 @@ package com.course_java_for_testers.addressbook.tests;
 
 import com.course_java_for_testers.addressbook.model.NewContactData;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -9,10 +10,8 @@ import java.util.NoSuchElementException;
 
 public class ContactDeletionTests extends TestBase {
 
-    @Test(enabled = true)
-    public void testContactDeletion() {
+    public void ensurePreconditions (){
         app.getNavigationHelper().gotoHomePage();
-
         if (!app.getContactHelper().isContactPresent()){
             app.getContactHelper().gotoCreateNewContact();
             app.getContactHelper().createContact(new NewContactData()
@@ -28,14 +27,21 @@ public class ContactDeletionTests extends TestBase {
                             .withGroup("test1"),
                     true);// указываем, что это создание "контакта"
             app.getNavigationHelper().gotoHomePage();}
-
-        List<NewContactData> before = app.getContactHelper().getContactList();
-        app.getContactHelper().selectContact(before.size()-1);
-        app.getContactHelper().deleteSelectedContact();
-        app.getNavigationHelper().gotoHomePage();
-        app.sleepScript(5000);
-        List<NewContactData> after = app.getContactHelper().getContactList();
-        Assert.assertEquals(after.size(),before.size()-1,"После удаления кол-во контактов должно быть меньше на единицу");
-
     }
+
+    @Test(enabled = true)
+    public void testContactDeletion() {
+        ensurePreconditions();
+        List<NewContactData> contactListBefore = app.getContactHelper().getContactList();
+        app.getContactHelper().deleteContact(contactListBefore);
+        app.getNavigationHelper().gotoHomePage();
+        app.getContactHelper().sleepScript(5000);
+        List<NewContactData> contactListAfter = app.getContactHelper().getContactList();
+        Assert.assertEquals(
+                contactListAfter.size(),
+                contactListBefore.size()-1,
+                "После удаления кол-во контактов должно быть меньше на единицу");
+    }
+
+
 }

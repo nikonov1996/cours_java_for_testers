@@ -6,13 +6,14 @@ import org.testng.annotations.Test;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactCreationTests extends TestBase {
 
     @Test
     public void testContactCreation(){
         app.getNavigationHelper().gotoHomePage();
-        List<NewContactData> before = app.getContactHelper().getContactList();
+        List<NewContactData> contactListBefore = app.getContactHelper().getContactList();
         app.getContactHelper().gotoCreateNewContact();
         NewContactData createdContact = new NewContactData()
                 .withFirstname("testname")
@@ -27,11 +28,17 @@ public class ContactCreationTests extends TestBase {
                 .withGroup("test1");
         app.getContactHelper().createContact(createdContact,true); // подтверждение что контакт создается, а не модифицируется
         app.getNavigationHelper().gotoHomePage();
-        List<NewContactData> after = app.getContactHelper().getContactList();
-        Assert.assertEquals(after.size(), before.size()+1,"При создании контакта, количество контактов в таблице должно увеличиваться на единицу");
+        List<NewContactData> contactListAfter = app.getContactHelper().getContactList();
+        Assert.assertEquals(
+                contactListAfter.size(),
+                contactListBefore.size()+1,
+                "При создании контакта, количество контактов в таблице должно увеличиваться на единицу");
 
-        before.add(createdContact);
-        Assert.assertEquals(new HashSet<>(after),new HashSet<>(before));
+        contactListBefore.add(createdContact);
+        Assert.assertEquals(
+                new HashSet<>(contactListAfter),
+                new HashSet<>(contactListBefore),
+                "Элементы списка контактов до создания нового,не должны отличаться от элементов списка контактов после создания контакта");
     }
 
 }

@@ -32,6 +32,14 @@ public class HelperBase {
         driver.switchTo().alert().accept();
     }
 
+    public void sleepScript(int millisec ){
+        try {
+            Thread.sleep(millisec);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public boolean isElementPresent( By locator) {
         try {
             driver.findElement(locator);

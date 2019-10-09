@@ -9,7 +9,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -30,6 +32,13 @@ public class ContactHelper extends HelperBase {
     public void deleteSelectedContact() {
         click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Select all'])[1]/following::input[2]"));
         confirmDeletion();
+    }
+
+    public void deleteContact(List<NewContactData> contact) {
+        int randomIndex = (int) ( Math.random() * contact.size()); // рандомный контакт
+        int lastIndex = contact.size()-1; // последний контакт
+        selectContact(randomIndex);
+        deleteSelectedContact();
     }
 
     //выбор контакта по индексу
@@ -72,11 +81,14 @@ public class ContactHelper extends HelperBase {
 
     public List<NewContactData> getContactList() {
         List<NewContactData> contacts = new ArrayList<NewContactData>();
-        List<WebElement> elements = driver.findElements(By.cssSelector("tr td:nth-child(2)"));
+        List<WebElement> elements = driver.findElements(By.cssSelector("tr[name=\"entry\"]")); //td:nth-child(2)
 
         for (WebElement elem: elements) {
-            String lastname = elem.getText();
-            contacts.add(new NewContactData().withLastname(lastname));
+            String lastname = elem.findElement(By.cssSelector("td:nth-child(2)")).getText();
+            String firstname = elem.findElement(By.cssSelector("td:nth-child(3)")).getText();
+            String address = elem.findElement(By.cssSelector("td:nth-child(4)")).getText();
+            String email = elem.findElement(By.cssSelector("td:nth-child(5)")).getText();
+            contacts.add(new NewContactData().withLastname(lastname).withFirstname(firstname).withAddress(address).withEmail(email));
         }
         return contacts;}
 }

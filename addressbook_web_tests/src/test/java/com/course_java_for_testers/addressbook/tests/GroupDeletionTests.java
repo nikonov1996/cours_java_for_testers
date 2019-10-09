@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class GroupDeletionTests extends TestBase {
 
-    public void ensurePreconditions() {
+    private void ensurePreconditions() {
         app.getNavigationHelper().gotoGroupPage();
         if (!app.getGroupHelper().isGroupPresent()) {
             app.getGroupHelper().createGroup(new GroupData()
