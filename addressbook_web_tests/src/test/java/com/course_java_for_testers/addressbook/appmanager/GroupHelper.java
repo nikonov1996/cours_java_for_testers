@@ -1,6 +1,7 @@
 package com.course_java_for_testers.addressbook.appmanager;
 
 import com.course_java_for_testers.addressbook.model.GroupData;
+import com.course_java_for_testers.addressbook.model.GroupsSet;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -98,8 +99,8 @@ public class GroupHelper extends HelperBase {
         return group;
     }
 
-    public Set<GroupData> getGroupSet() {
-        Set<GroupData> group = new HashSet<GroupData>();
+    public GroupsSet getGroupSet() {
+        GroupsSet group = new GroupsSet();
         List<WebElement> elements = driver.findElements(By.cssSelector("span.group"));
         for (WebElement elem: elements) {
             String name = elem.getText();

@@ -1,5 +1,6 @@
 package com.course_java_for_testers.addressbook.tests;
 
+import com.course_java_for_testers.addressbook.model.ContactList;
 import com.course_java_for_testers.addressbook.model.NewContactData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -13,7 +14,7 @@ public class ContactCreationTests extends TestBase {
     @Test
     public void testContactCreation(){
         app.getNavigationHelper().gotoHomePage();
-        List<NewContactData> contactListBefore = app.getContactHelper().getContactList();
+        ContactList contactListBefore = app.getContactHelper().getContactList();
         app.getContactHelper().gotoCreateNewContact();
         NewContactData createdContact = new NewContactData()
                 .withFirstname("testname")
@@ -28,16 +29,15 @@ public class ContactCreationTests extends TestBase {
                 .withGroup("test1");
         app.getContactHelper().createContact(createdContact,true); // подтверждение что контакт создается, а не модифицируется
         app.getNavigationHelper().gotoHomePage();
-        List<NewContactData> contactListAfter = app.getContactHelper().getContactList();
+        ContactList contactListAfter = app.getContactHelper().getContactList();
         Assert.assertEquals(
                 contactListAfter.size(),
                 contactListBefore.size()+1,
                 "При создании контакта, количество контактов в таблице должно увеличиваться на единицу");
 
-        contactListBefore.add(createdContact);
         Assert.assertEquals(
                 new HashSet<>(contactListAfter),
-                new HashSet<>(contactListBefore),
+                new HashSet<>(contactListBefore.withAdded(createdContact)),
                 "Элементы списка контактов до создания нового,не должны отличаться от элементов списка контактов после создания контакта");
     }
 

@@ -1,5 +1,6 @@
 package com.course_java_for_testers.addressbook.appmanager;
 
+import com.course_java_for_testers.addressbook.model.ContactList;
 import com.course_java_for_testers.addressbook.model.GroupData;
 import com.course_java_for_testers.addressbook.model.NewContactData;
 import org.openqa.selenium.By;
@@ -37,13 +38,12 @@ public class ContactHelper extends HelperBase {
     public void deleteContact(List<NewContactData> contact) {
         int randomIndex = (int) ( Math.random() * contact.size()); // рандомный контакт
         int lastIndex = contact.size()-1; // последний контакт
-        selectContact(randomIndex);
+        selectContact(lastIndex);
         deleteSelectedContact();
     }
 
     //выбор контакта по индексу
-    public void selectContact(int index) {
-        driver.findElements(By.name("selected[]")).get(index).click(); }
+    public void selectContact(int index) { driver.findElements(By.name("selected[]")).get(index).click(); }
 
     public void fillContactForm(NewContactData newContactData, boolean creation ) {
         type(By.name("firstname"),newContactData.getFirstname());
@@ -79,8 +79,8 @@ public class ContactHelper extends HelperBase {
     }
 
 
-    public List<NewContactData> getContactList() {
-        List<NewContactData> contacts = new ArrayList<NewContactData>();
+    public ContactList getContactList() {
+        ContactList contacts = new ContactList();
         List<WebElement> elements = driver.findElements(By.cssSelector("tr[name=\"entry\"]")); //td:nth-child(2)
 
         for (WebElement elem: elements) {

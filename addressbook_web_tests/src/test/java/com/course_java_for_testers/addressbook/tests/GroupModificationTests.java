@@ -1,6 +1,7 @@
 package com.course_java_for_testers.addressbook.tests;
 
 import com.course_java_for_testers.addressbook.model.GroupData;
+import com.course_java_for_testers.addressbook.model.GroupsSet;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -25,7 +26,7 @@ public class GroupModificationTests extends TestBase {
 
     @Test
     public void testGroupModification() {
-        Set<GroupData> groupListBefore = app.getGroupHelper().getGroupSet();
+        GroupsSet groupListBefore = app.getGroupHelper().getGroupSet();
         GroupData groupBeforeModify = groupListBefore.iterator().next();
         GroupData groupAfterModify = new GroupData()
                 .withId(groupBeforeModify.getId())
@@ -34,7 +35,7 @@ public class GroupModificationTests extends TestBase {
                 .withFooter("test3");
 
         app.getGroupHelper().modifyGroup(groupAfterModify);
-        Set<GroupData> groupListAfter = app.getGroupHelper().getGroupSet();
+        GroupsSet groupListAfter = app.getGroupHelper().getGroupSet();
 
         Assert.assertEquals(
                 groupListAfter.size(),
@@ -42,12 +43,11 @@ public class GroupModificationTests extends TestBase {
                 "Колличество групп после модификации группы не должно меняться");
 
         // сравнение элементов списка групп после модификации
-        groupListBefore.remove(groupBeforeModify);
-        groupListBefore.add(groupAfterModify);
-
         Assert.assertEquals(
                 groupListAfter,
-                groupListBefore,
+                groupListBefore
+                .without(groupBeforeModify)
+                .withAdded(groupAfterModify),
                 "Элементы  списка (кроме модифицируемого)не должны быть изменены после модификации группы");
 
     }

@@ -1,10 +1,12 @@
 package com.course_java_for_testers.addressbook.tests;
 
+import com.course_java_for_testers.addressbook.model.ContactList;
 import com.course_java_for_testers.addressbook.model.NewContactData;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -32,15 +34,22 @@ public class ContactDeletionTests extends TestBase {
     @Test(enabled = true)
     public void testContactDeletion() {
         ensurePreconditions();
-        List<NewContactData> contactListBefore = app.getContactHelper().getContactList();
+        ContactList contactListBefore = app.getContactHelper().getContactList();
+        NewContactData deletedContact = contactListBefore.get(contactListBefore.size()-1);
         app.getContactHelper().deleteContact(contactListBefore);
         app.getNavigationHelper().gotoHomePage();
         app.getContactHelper().sleepScript(5000);
-        List<NewContactData> contactListAfter = app.getContactHelper().getContactList();
+        ContactList contactListAfter = app.getContactHelper().getContactList();
         Assert.assertEquals(
                 contactListAfter.size(),
                 contactListBefore.size()-1,
                 "После удаления кол-во контактов должно быть меньше на единицу");
+
+        Assert.assertEquals(
+                new HashSet<>(contactListAfter),
+                new HashSet<>(contactListBefore.without(deletedContact)),
+                "Элементы списка контактов (кроме удаляемого) не должны изменятся после удаления группы."
+        );
     }
 
 

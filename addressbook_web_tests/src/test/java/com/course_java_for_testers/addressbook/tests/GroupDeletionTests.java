@@ -1,6 +1,7 @@
 package com.course_java_for_testers.addressbook.tests;
 
 import com.course_java_for_testers.addressbook.model.GroupData;
+import com.course_java_for_testers.addressbook.model.GroupsSet;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
@@ -25,10 +26,10 @@ public class GroupDeletionTests extends TestBase {
     @Test
     public void testGroupDeletion() {
         ensurePreconditions();
-        Set<GroupData> groupListBefore = app.getGroupHelper().getGroupSet();
+        GroupsSet groupListBefore = app.getGroupHelper().getGroupSet();
         GroupData deletedGroup = groupListBefore.iterator().next(); // выбирает любую группу из списка
         app.getGroupHelper().deleteGroupById(deletedGroup);
-        Set<GroupData> groupListAfter = app.getGroupHelper().getGroupSet();
+        GroupsSet groupListAfter = app.getGroupHelper().getGroupSet();
 
         Assert.assertEquals(
                 groupListAfter.size(),
@@ -36,13 +37,11 @@ public class GroupDeletionTests extends TestBase {
                 "После удаление количество групп должно быть меньше на единицу");
 
         // сравниваем списки групп до удаления и после удаления
-        groupListBefore.remove(deletedGroup);
 
         Assert.assertEquals(
                 groupListAfter,
-                groupListBefore,
+                groupListBefore.without(deletedGroup),
                 "Элементы списка групп (кроме удаляемого) не должны изменятся после удаления группы.");
-
     }
 
 }
