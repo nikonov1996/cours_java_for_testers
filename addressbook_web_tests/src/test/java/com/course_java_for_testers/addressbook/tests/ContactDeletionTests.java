@@ -37,9 +37,8 @@ public class ContactDeletionTests extends TestBase {
         ContactList contactListBefore = app.getContactHelper().getContactList();
         NewContactData deletedContact = contactListBefore.get(contactListBefore.size()-1);
         app.getContactHelper().deleteContact(contactListBefore);
-        app.getNavigationHelper().gotoHomePage();
-        app.getContactHelper().sleepScript(5000);
         ContactList contactListAfter = app.getContactHelper().getContactList();
+
         Assert.assertEquals(
                 contactListAfter.size(),
                 contactListBefore.size()-1,
@@ -48,8 +47,7 @@ public class ContactDeletionTests extends TestBase {
         Assert.assertEquals(
                 new HashSet<>(contactListAfter),
                 new HashSet<>(contactListBefore.without(deletedContact)),
-                "Элементы списка контактов (кроме удаляемого) не должны изменятся после удаления группы."
-        );
+                "Элементы списка контактов (кроме удаляемого) не должны изменятся после удаления группы.");
     }
 
 
