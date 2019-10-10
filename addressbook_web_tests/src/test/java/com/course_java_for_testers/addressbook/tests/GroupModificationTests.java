@@ -35,12 +35,12 @@ public class GroupModificationTests extends TestBase {
                 .withFooter("test3");
 
         app.getGroupHelper().modifyGroup(groupAfterModify);
-        GroupsSet groupListAfter = app.getGroupHelper().getGroupSet();
 
         Assert.assertEquals(
-                groupListAfter.size(),
+                app.getGroupHelper().getGroupCount(),
                 groupListBefore.size(),
                 "Колличество групп после модификации группы не должно меняться");
+        GroupsSet groupListAfter = app.getGroupHelper().getGroupSet();
 
         // сравнение элементов списка групп после модификации
         Assert.assertEquals(

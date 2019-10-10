@@ -45,4 +45,34 @@ public class GroupCreationTests extends TestBase {
                 "Элементы  списка (кроме созданного)не должны быть изменены после создания группы");
 
     }
+
+    @Test
+    public void testGroupBadCreation() {
+        app.getNavigationHelper().gotoGroupPage();
+        GroupsSet groupListBefore = app.getGroupHelper().getGroupSet();
+        GroupData createdGroup = new GroupData()
+                .withName("test1'")
+                .withHeader("test2")
+                .withFooter("test3");
+        app.getGroupHelper().createGroup(createdGroup);
+        Assert.assertEquals(
+                app.getGroupHelper().getGroupCount(),
+                groupListBefore.size() + 1,
+                "Количество групп после создания должно быть больше чем до создания.");
+        GroupsSet groupListAfter = app.getGroupHelper().getGroupSet();
+
+
+        // Сравнение элементов списков групп после создания новой группы
+//        assertThat(
+//                groupListAfter,
+//                equalTo(groupListBefore
+//                        .withAdded(createdGroup.withId(groupListAfter.stream().mapToInt((g) -> g.getId()).max().getAsInt())))); // библиотека hamcrest
+
+        Assert.assertEquals(
+                groupListAfter,
+                groupListBefore
+                        .withAdded(createdGroup.withId(groupListAfter.stream().mapToInt((g) -> g.getId()).max().getAsInt())),
+                "Элементы  списка (кроме созданного)не должны быть изменены после создания группы");
+
+    }
 }

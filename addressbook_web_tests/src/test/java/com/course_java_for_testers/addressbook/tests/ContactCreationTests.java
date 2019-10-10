@@ -29,11 +29,12 @@ public class ContactCreationTests extends TestBase {
                 .withGroup("test1");
         app.getContactHelper().createContact(createdContact,true); // подтверждение что контакт создается, а не модифицируется
         app.getNavigationHelper().gotoHomePage();
-        ContactList contactListAfter = app.getContactHelper().getContactList();
+
         Assert.assertEquals(
-                contactListAfter.size(),
+                app.getContactHelper().getContactCount(),
                 contactListBefore.size()+1,
                 "При создании контакта, количество контактов в таблице должно увеличиваться на единицу");
+        ContactList contactListAfter = app.getContactHelper().getContactList();
 
         Assert.assertEquals(
                 new HashSet<>(contactListAfter),

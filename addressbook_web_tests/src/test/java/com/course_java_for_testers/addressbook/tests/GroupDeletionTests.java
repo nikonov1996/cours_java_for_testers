@@ -29,15 +29,14 @@ public class GroupDeletionTests extends TestBase {
         GroupsSet groupListBefore = app.getGroupHelper().getGroupSet();
         GroupData deletedGroup = groupListBefore.iterator().next(); // выбирает любую группу из списка
         app.getGroupHelper().deleteGroupById(deletedGroup);
-        GroupsSet groupListAfter = app.getGroupHelper().getGroupSet();
 
         Assert.assertEquals(
-                groupListAfter.size(),
+                app.getGroupHelper().getGroupCount(),
                 groupListBefore.size() - 1,
                 "После удаление количество групп должно быть меньше на единицу");
+        GroupsSet groupListAfter = app.getGroupHelper().getGroupSet();
 
         // сравниваем списки групп до удаления и после удаления
-
         Assert.assertEquals(
                 groupListAfter,
                 groupListBefore.without(deletedGroup),

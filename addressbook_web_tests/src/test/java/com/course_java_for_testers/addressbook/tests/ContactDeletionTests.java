@@ -37,12 +37,12 @@ public class ContactDeletionTests extends TestBase {
         ContactList contactListBefore = app.getContactHelper().getContactList();
         NewContactData deletedContact = contactListBefore.get(contactListBefore.size()-1);
         app.getContactHelper().deleteContact(contactListBefore);
-        ContactList contactListAfter = app.getContactHelper().getContactList();
 
         Assert.assertEquals(
-                contactListAfter.size(),
+                app.getContactHelper().getContactCount(),
                 contactListBefore.size()-1,
                 "После удаления кол-во контактов должно быть меньше на единицу");
+        ContactList contactListAfter = app.getContactHelper().getContactList();
 
         Assert.assertEquals(
                 new HashSet<>(contactListAfter),
