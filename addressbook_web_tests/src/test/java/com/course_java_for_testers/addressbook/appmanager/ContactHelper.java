@@ -46,6 +46,7 @@ public class ContactHelper extends HelperBase {
         int lastIndex = contact.size() - 1; // последний контакт
         selectContact(lastIndex);
         deleteSelectedContact();
+        contactCache = null;
         returnToHomePage();
         sleepScript(5000);
     }
@@ -78,6 +79,7 @@ public class ContactHelper extends HelperBase {
     public void createContact(NewContactData contactdata, boolean creation) {
         fillContactForm(contactdata, creation);
         submitNewContactCreation();
+        contactCache = null;
     }
 
     public boolean isContactPresent() {
@@ -89,8 +91,12 @@ public class ContactHelper extends HelperBase {
     }
 
 
+    private ContactList contactCache = null;
     public ContactList getContactList() {
-        ContactList contacts = new ContactList();
+        if (contactCache != null){
+            return new ContactList(contactCache);
+        }
+        contactCache = new ContactList();
         List<WebElement> elements = driver.findElements(By.cssSelector("tr[name=\"entry\"]")); //td:nth-child(2)
 
         for (WebElement elem : elements) {
@@ -98,8 +104,8 @@ public class ContactHelper extends HelperBase {
             String firstname = elem.findElement(By.cssSelector("td:nth-child(3)")).getText();
             String address = elem.findElement(By.cssSelector("td:nth-child(4)")).getText();
             String email = elem.findElement(By.cssSelector("td:nth-child(5)")).getText();
-            contacts.add(new NewContactData().withLastname(lastname).withFirstname(firstname).withAddress(address).withEmail(email));
+            contactCache.add(new NewContactData().withLastname(lastname).withFirstname(firstname).withAddress(address).withEmail(email));
         }
-        return contacts;
+        return new ContactList(contactCache);
     }
 }
