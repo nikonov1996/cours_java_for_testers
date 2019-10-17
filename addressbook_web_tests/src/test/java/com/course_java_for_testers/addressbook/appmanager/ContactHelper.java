@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -67,6 +68,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("mobile"), newContactData.getMobilePhone());
         type(By.name("home"), newContactData.getHomePhone());
         type(By.name("email"), newContactData.getEmail());
+        attach(By.name("photo"),newContactData.getPhoto());
 
         // Если "создание контакта", то есть выбор групп, если "модификация контакта", то выбор групп отсутствует
         if (creation) {

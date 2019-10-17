@@ -5,6 +5,7 @@ import com.course_java_for_testers.addressbook.model.NewContactData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,6 +17,7 @@ public class ContactCreationTests extends TestBase {
         app.getNavigationHelper().gotoHomePage();
         ContactList contactListBefore = app.getContactHelper().getContactList();
         app.getContactHelper().gotoCreateNewContact();
+        File photo = new File("src/test/resources/image.png");
         NewContactData createdContact = new NewContactData()
                 .withFirstname("testname")
                 .withLastname("testlastname")
@@ -26,7 +28,8 @@ public class ContactCreationTests extends TestBase {
                 .withHomePhone("54872")
                 .withMobilePhone("89135876592")
                 .withEmail("test@test")
-                .withGroup("test1");
+                .withGroup("test1")
+                .withPhoto(photo);
         app.getContactHelper().createContact(createdContact,true); // подтверждение что контакт создается, а не модифицируется
         app.getNavigationHelper().gotoHomePage();
 

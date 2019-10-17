@@ -1,5 +1,7 @@
 package com.course_java_for_testers.addressbook.model;
 
+import java.io.File;
+
 public class NewContactData {
     private String firstname;
     private String lastname;
@@ -11,6 +13,7 @@ public class NewContactData {
     private String mobilePhone;
     private String email;
     private String group;
+    private File photo;
 
     @Override
     public boolean equals(Object o) {
@@ -94,6 +97,11 @@ public class NewContactData {
         return this;
     }
 
+    public NewContactData withPhoto(File photo) {
+        this.photo = photo;
+        return this;
+    }
+
     public String getFirstname() {
         return firstname;
     }
@@ -131,5 +139,7 @@ public class NewContactData {
     }
 
     public String getGroup() { return group; }
+
+    public File getPhoto() { return photo; }
 
 }
