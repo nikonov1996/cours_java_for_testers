@@ -16,6 +16,8 @@ public class GroupCreationTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> paramsForTest() throws IOException {
         ArrayList<Object[]> list = new ArrayList<Object[]>();
+
+      //Если нужно читать данные из файла
         BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("src/test/resources/testdata.txt")));
         String lineWithParams = bufferedReader.readLine();
         while (lineWithParams != null){
