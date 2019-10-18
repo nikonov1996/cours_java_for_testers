@@ -1,0 +1,17 @@
+<list>
+  <group>
+    <grname>testname1</grname>
+    <grheader>testheader1</grheader>
+    <grfooter>testfooter1</grfooter>
+  </group>
+  <group>
+    <grname>testname5</grname>
+    <grheader>testheader5</grheader>
+    <grfooter>testfooter5</grfooter>
+  </group>
+  <group>
+    <grname>testname9</grname>
+    <grheader>testheader9</grheader>
+    <grfooter>testfooter9</grfooter>
+  </group>
+</list>

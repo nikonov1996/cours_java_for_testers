@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.course_java_for_testers.addressbook.tests.GroupModificationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-10-18T08:55:57" hostname="DESKTOP-L6JDJSL" time="2.548">
+  <properties/>
+  <testcase name="testGroupModification" classname="com.course_java_for_testers.addressbook.tests.GroupModificationTests" time="2.548"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
