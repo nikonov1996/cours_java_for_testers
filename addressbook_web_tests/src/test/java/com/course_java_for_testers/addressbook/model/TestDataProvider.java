@@ -18,7 +18,9 @@ public class TestDataProvider {
 
     @DataProvider(name = "dataFromXML") // тестовые данные беруться из xml файла
     public Iterator<Object[]> dataFromXML() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/testdata.xml")));
+        try (BufferedReader reader = new BufferedReader(
+                new FileReader(
+                        new File("src/test/resources/testdata.xml")))){
         StringBuilder xml = new StringBuilder("");
         String line = reader.readLine();
         while (line != null){
@@ -32,11 +34,14 @@ public class TestDataProvider {
                 .map((g) -> new Object[]{g})
                 .collect(Collectors.toList())
                 .iterator();
+        }
     }
 
     @DataProvider(name = "dataFromJSON") // тестовые данные беруться из xml файла
     public Iterator<Object[]> dataFromJSON() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/testdata.json")));
+        try (BufferedReader reader = new BufferedReader(
+                new FileReader(
+                        new File("src/test/resources/testdata.json")))){
         StringBuilder json = new StringBuilder("");
         String line = reader.readLine();
         while (line != null){
@@ -49,6 +54,7 @@ public class TestDataProvider {
                 .map((g) -> new Object[]{g})
                 .collect(Collectors.toList())
                 .iterator();
+        }
     }
 
     @DataProvider(name = "dataFromFile") // тестовые данные берутся из текстового файла
