@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.course_java_for_testers.addressbook.tests.ContactDeletionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-10-18T08:56:47" hostname="DESKTOP-L6JDJSL" time="6.629">
+<testsuite name="com.course_java_for_testers.addressbook.tests.ContactDeletionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-10-18T11:27:46" hostname="DESKTOP-L6JDJSL" time="7.646">
   <properties/>
-  <testcase name="testContactDeletion" classname="com.course_java_for_testers.addressbook.tests.ContactDeletionTests" time="6.629"/>
+  <testcase name="testContactDeletion" classname="com.course_java_for_testers.addressbook.tests.ContactDeletionTests" time="7.646"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

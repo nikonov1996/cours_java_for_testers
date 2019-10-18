@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.course_java_for_testers.addressbook.tests.GroupCreationTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-10-18T08:55:44" hostname="DESKTOP-L6JDJSL" time="12.543">
+<testsuite name="com.course_java_for_testers.addressbook.tests.GroupCreationTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-10-18T11:26:37" hostname="DESKTOP-L6JDJSL" time="18.685">
   <properties/>
-  <testcase name="testGroupCreation[0](GroupData{grname='testname3', id=2147483647})" classname="com.course_java_for_testers.addressbook.tests.GroupCreationTests" time="3.298"/>
-  <testcase name="testGroupCreation[1](GroupData{grname='testname2', id=2147483647})" classname="com.course_java_for_testers.addressbook.tests.GroupCreationTests" time="2.328"/>
-  <testcase name="testGroupCreation[2](GroupData{grname='testname1', id=2147483647})" classname="com.course_java_for_testers.addressbook.tests.GroupCreationTests" time="2.241"/>
-  <testcase name="testGroupCreation[3](GroupData{grname='testname0', id=2147483647})" classname="com.course_java_for_testers.addressbook.tests.GroupCreationTests" time="2.384"/>
-  <testcase name="testGroupCreation[4](GroupData{grname='testname4', id=2147483647})" classname="com.course_java_for_testers.addressbook.tests.GroupCreationTests" time="2.291"/>
+  <testcase name="testGroupCreation[0](GroupData{grname='testname3', id=2147483647})" classname="com.course_java_for_testers.addressbook.tests.GroupCreationTests" time="5.327"/>
+  <testcase name="testGroupCreation[1](GroupData{grname='testname2', id=2147483647})" classname="com.course_java_for_testers.addressbook.tests.GroupCreationTests" time="3.417"/>
+  <testcase name="testGroupCreation[2](GroupData{grname='testname1', id=2147483647})" classname="com.course_java_for_testers.addressbook.tests.GroupCreationTests" time="3.369"/>
+  <testcase name="testGroupCreation[3](GroupData{grname='testname0', id=2147483647})" classname="com.course_java_for_testers.addressbook.tests.GroupCreationTests" time="3.248"/>
+  <testcase name="testGroupCreation[4](GroupData{grname='testname4', id=2147483647})" classname="com.course_java_for_testers.addressbook.tests.GroupCreationTests" time="3.32"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
