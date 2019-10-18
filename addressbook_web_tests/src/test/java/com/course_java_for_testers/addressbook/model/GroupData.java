@@ -1,14 +1,15 @@
 package com.course_java_for_testers.addressbook.model;
 
+import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 @XStreamAlias("group")
 public class GroupData {
     @XStreamOmitField private int id = Integer.MAX_VALUE;
-    private String grname;
-    private String grheader;
-    private String grfooter;
+    @Expose private String grname;
+    @Expose private String grheader;
+    @Expose private String grfooter;
 
     public int getId() { return id; }
 

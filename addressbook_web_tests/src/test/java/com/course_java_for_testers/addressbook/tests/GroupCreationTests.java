@@ -17,7 +17,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupCreationTests extends TestBase {
 
-    @Test (dataProvider = "dataFromXML")
+    @Test (dataProvider = "dataFromJSON")
     public void testGroupCreation(GroupData group) {
         app.getNavigationHelper().gotoGroupPage();
         GroupsSet groupListBefore = app.getGroupHelper().getGroupSet();

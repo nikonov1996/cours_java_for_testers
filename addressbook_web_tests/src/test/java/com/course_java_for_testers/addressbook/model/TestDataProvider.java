@@ -1,5 +1,7 @@
 package com.course_java_for_testers.addressbook.model;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
 
 import java.io.BufferedReader;
@@ -26,6 +28,23 @@ public class TestDataProvider {
         XStream xStream = new XStream();
         xStream.processAnnotations(GroupData.class);
         List<GroupData> groups = (List<GroupData>) xStream.fromXML(xml.toString());
+        return groups.stream()
+                .map((g) -> new Object[]{g})
+                .collect(Collectors.toList())
+                .iterator();
+    }
+
+    @DataProvider(name = "dataFromJSON") // тестовые данные беруться из xml файла
+    public Iterator<Object[]> dataFromJSON() throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/testdata.json")));
+        StringBuilder json = new StringBuilder("");
+        String line = reader.readLine();
+        while (line != null){
+            json.append(line);
+            line = reader.readLine();
+        }
+        Gson gson = new Gson();
+        List<GroupData> groups = gson.fromJson(json.toString(), new TypeToken<List<GroupData>>(){}.getType());
         return groups.stream()
                 .map((g) -> new Object[]{g})
                 .collect(Collectors.toList())
