@@ -3,6 +3,7 @@ package com.course_java_for_testers.addressbook.model;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
+import com.thoughtworks.xstream.XStream;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -13,11 +14,14 @@ import java.util.List;
 
 public class GroupDataGenerator {
 
-    @Parameter(names = "-grcount", description = "Group count which you want to create")
-    public int count;
+    @Parameter(names = "-count", description = "Group count which you want to create")
+    private int count;
 
     @Parameter(names = "-file", description = "File path to file,in which generated data save")
-    public String file;
+    private String file;
+
+    @Parameter(names = "-format", description = "File format, in which you want to save you file")
+    private String format;
 
     public static void main(String[] args) throws IOException {
         GroupDataGenerator generator = new GroupDataGenerator();
@@ -33,7 +37,35 @@ public class GroupDataGenerator {
 
     private void run() throws IOException {
         List<GroupData> groups = generateGroups(count);
-        saveGeneratedGroupsInFile(groups, new File(file));
+        switch (format) {
+            case "txt":
+                saveInFile(groups, new File(file));
+                break;
+            case "xml":
+                saveInXML(groups, new File(file));
+                break;
+            default:
+                System.out.println("Unrecognized format");
+                break;
+        }
+    }
+
+    private void saveInXML(List<GroupData> groups, File file) throws IOException {
+        XStream xstream = new XStream();
+        xstream.processAnnotations(GroupData.class);
+        String xml = xstream.toXML(groups);
+        Writer writer = new FileWriter(file);
+        writer.write(xml);
+        writer.close();
+
+    }
+
+    private void saveInFile(List<GroupData> groupData, File file) throws IOException {
+        Writer writer = new FileWriter(file);
+        for (GroupData group: groupData){
+            writer.write(String.format("%s;%s;%s\n",group.getGrname(),group.getGrheader(),group.getGrfooter()));
+        }
+        writer.close();
     }
 
     private List<GroupData> generateGroups(int count) {
@@ -46,13 +78,5 @@ public class GroupDataGenerator {
                     .withFooter(String.format("testfooter%s", random)));
         }
         return groups;
-    }
-
-    private void saveGeneratedGroupsInFile(List<GroupData> groupData, File file) throws IOException {
-        Writer writer = new FileWriter(file);
-        for (GroupData group: groupData){
-            writer.write(String.format("%s;%s;%s\n",group.getGrname(),group.getGrheader(),group.getGrfooter()));
-        }
-        writer.close();
     }
 }

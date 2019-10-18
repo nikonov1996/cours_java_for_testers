@@ -1,8 +1,11 @@
 package com.course_java_for_testers.addressbook.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
+@XStreamAlias("group")
 public class GroupData {
-    private int id = Integer.MAX_VALUE;
+    @XStreamOmitField private int id = Integer.MAX_VALUE;
     private String grname;
     private String grheader;
     private String grfooter;
