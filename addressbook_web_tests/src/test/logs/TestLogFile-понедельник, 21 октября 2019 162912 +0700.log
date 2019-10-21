@@ -1,0 +1,3 @@
+12172 [main] INFO  c.c.addressbook.tests.TestBase - Test 'testGroupCreation' started..
+12182 [main] INFO  c.c.addressbook.tests.TestBase - Test's params: [GroupData{grname='testname1', id=2147483647}]
+18398 [main] INFO  c.c.addressbook.tests.TestBase - Test 'testGroupCreation' stopped
