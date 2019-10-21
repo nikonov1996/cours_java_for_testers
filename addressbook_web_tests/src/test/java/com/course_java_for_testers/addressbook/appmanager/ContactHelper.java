@@ -42,6 +42,7 @@ public class ContactHelper extends HelperBase {
         confirmDeletion();
     }
 
+
     public void deleteContact(List<NewContactData> contact) {
         int randomIndex = (int) (Math.random() * contact.size()); // рандомный контакт
         int lastIndex = contact.size() - 1; // последний контакт

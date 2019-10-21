@@ -1,0 +1,3 @@
+11466 [main] INFO  c.c.addressbook.tests.TestBase - Test 'testContactCreation' started..
+11478 [main] INFO  c.c.addressbook.tests.TestBase - Test's params: []
+29500 [main] INFO  c.c.addressbook.tests.TestBase - Test 'testContactCreation' stopped

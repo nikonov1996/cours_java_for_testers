@@ -1,27 +1,7 @@
 [
   {
-    "grname": "testname3",
-    "grheader": "testheader3",
-    "grfooter": "testfooter3"
-  },
-  {
-    "grname": "testname2",
-    "grheader": "testheader2",
-    "grfooter": "testfooter2"
-  },
-  {
     "grname": "testname1",
     "grheader": "testheader1",
     "grfooter": "testfooter1"
-  },
-  {
-    "grname": "testname0",
-    "grheader": "testheader0",
-    "grfooter": "testfooter0"
-  },
-  {
-    "grname": "testname4",
-    "grheader": "testheader4",
-    "grfooter": "testfooter4"
   }
 ]

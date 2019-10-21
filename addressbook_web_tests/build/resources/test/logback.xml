@@ -1,6 +1,6 @@
 <configuration>
 
-    <timestamp key="bySecond" datePattern= "EEEE, dd MMMM yyyy 'время - 'HH.mm.ss "/>
+    <timestamp key="bySecond" datePattern= "EEEE, dd MMMM yyyy HHmmss "/>
 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>src/test/logs/TestLogFile-${bySecond}.log</file>
