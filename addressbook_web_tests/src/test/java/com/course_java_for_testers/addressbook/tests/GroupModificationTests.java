@@ -46,7 +46,7 @@ public class GroupModificationTests extends TestBase {
         Assert.assertEquals(
                 groupListAfter,
                 groupListBefore
-                .without(groupBeforeModify)
+                .without(groupAfterModify) // поломка
                 .withAdded(groupAfterModify),
                 "Элементы  списка (кроме модифицируемого)не должны быть изменены после модификации группы");
 
