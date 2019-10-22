@@ -1,0 +1,3 @@
+9113 [main] INFO  c.c.addressbook.tests.TestBase - Test 'testGroupDeletion' started..
+9119 [main] INFO  c.c.addressbook.tests.TestBase - Test's params: []
+12673 [main] INFO  c.c.addressbook.tests.TestBase - Test 'testGroupDeletion' stopped

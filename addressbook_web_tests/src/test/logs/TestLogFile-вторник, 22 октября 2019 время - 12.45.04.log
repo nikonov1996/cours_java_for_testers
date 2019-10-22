@@ -1,0 +1,3 @@
+6563 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testGroupModification' started..
+6567 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test's params: []
+9872 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testGroupModification' stopped
