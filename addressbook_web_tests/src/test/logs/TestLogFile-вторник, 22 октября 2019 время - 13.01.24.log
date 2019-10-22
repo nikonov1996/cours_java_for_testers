@@ -1,0 +1,6 @@
+6106 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testContactCreation' started..
+6114 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test's params: []
+15300 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testContactCreation' stopped
+15305 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testContactDeletion' started..
+15305 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test's params: []
+23312 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testContactDeletion' stopped

@@ -1,0 +1,3 @@
+6738 [main] INFO  c.c.addressbook.tests.TestBase - Test 'testContactDeletion' started..
+6743 [main] INFO  c.c.addressbook.tests.TestBase - Test's params: []
+17854 [main] INFO  c.c.addressbook.tests.TestBase - Test 'testContactDeletion' stopped
