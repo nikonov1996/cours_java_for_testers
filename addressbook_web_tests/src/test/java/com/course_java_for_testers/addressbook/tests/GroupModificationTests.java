@@ -15,7 +15,7 @@ public class GroupModificationTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-        app.getNavigationHelper().gotoGroupPage();
+       // app.getNavigationHelper().gotoGroupPage();
         if (!app.getGroupHelper().isGroupPresent()) {
             app.getGroupHelper().createGroup(new GroupData()
                     .withName("test1")
@@ -46,7 +46,7 @@ public class GroupModificationTests extends TestBase {
         Assert.assertEquals(
                 groupListAfter,
                 groupListBefore
-                .without(groupAfterModify) // поломка
+                .without(groupBeforeModify)
                 .withAdded(groupAfterModify),
                 "Элементы  списка (кроме модифицируемого)не должны быть изменены после модификации группы");
 
