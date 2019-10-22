@@ -2,16 +2,9 @@ package com.course_java_for_testers.addressbook.tests;
 
 import com.course_java_for_testers.addressbook.model.GroupData;
 import com.course_java_for_testers.addressbook.model.GroupsSet;
-import com.course_java_for_testers.addressbook.model.TestDataProvider;
-import com.thoughtworks.xstream.XStream;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.*;
-import java.util.*;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 

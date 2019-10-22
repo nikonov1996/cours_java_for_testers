@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.course_java_for_testers.addressbook.tests.GroupDeletionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-10-22T07:13:07" hostname="DESKTOP-L6JDJSL" time="0.969">
+<testsuite name="com.course_java_for_testers.addressbook.tests.GroupDeletionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-10-22T08:21:33" hostname="DESKTOP-L6JDJSL" time="1.016">
   <properties/>
-  <testcase name="testGroupDeletion" classname="com.course_java_for_testers.addressbook.tests.GroupDeletionTests" time="0.969"/>
-  <system-out><![CDATA[14:13:07.650 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testGroupDeletion' started..
-14:13:07.651 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test's params: []
+  <testcase name="testGroupDeletion" classname="com.course_java_for_testers.addressbook.tests.GroupDeletionTests" time="1.016"/>
+  <system-out><![CDATA[15:21:33.058 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testGroupDeletion' started..
+15:21:33.059 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test's params: []
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

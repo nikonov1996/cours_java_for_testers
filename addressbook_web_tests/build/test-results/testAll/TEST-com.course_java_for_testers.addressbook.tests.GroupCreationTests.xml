@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.course_java_for_testers.addressbook.tests.GroupCreationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-10-22T07:13:03" hostname="DESKTOP-L6JDJSL" time="2.063">
+<testsuite name="com.course_java_for_testers.addressbook.tests.GroupCreationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-10-22T08:21:28" hostname="DESKTOP-L6JDJSL" time="2.4">
   <properties/>
-  <testcase name="testGroupCreation[0](GroupData{grname='testname1', id=2147483647})" classname="com.course_java_for_testers.addressbook.tests.GroupCreationTests" time="2.063"/>
-  <system-out><![CDATA[14:13:03.567 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testGroupCreation' started..
-14:13:03.567 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test's params: [GroupData{grname='testname1', id=2147483647}]
+  <testcase name="testGroupCreation[0](GroupData{grname='testname1', id=2147483647})" classname="com.course_java_for_testers.addressbook.tests.GroupCreationTests" time="2.4"/>
+  <system-out><![CDATA[15:21:28.446 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testGroupCreation' started..
+15:21:28.446 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test's params: [GroupData{grname='testname1', id=2147483647}]
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
