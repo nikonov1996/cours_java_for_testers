@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.course_java_for_testers.addressbook.tests.ContactCreationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-10-22T07:12:50" hostname="DESKTOP-L6JDJSL" time="6.6">
+  <properties/>
+  <testcase name="testContactCreation" classname="com.course_java_for_testers.addressbook.tests.ContactCreationTests" time="6.6"/>
+  <system-out><![CDATA[14:12:50.340 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testContactCreation' started..
+14:12:50.346 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test's params: []
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

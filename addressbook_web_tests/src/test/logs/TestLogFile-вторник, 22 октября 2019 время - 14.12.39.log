@@ -1,0 +1,15 @@
+10594 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testContactCreation' started..
+10600 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test's params: []
+17209 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testContactCreation' stopped
+17214 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testContactDeletion' started..
+17214 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test's params: []
+23740 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testContactDeletion' stopped
+23821 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testGroupCreation' started..
+23821 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test's params: [GroupData{grname='testname1', id=2147483647}]
+25886 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testGroupCreation' stopped
+25887 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testGroupModification' started..
+25887 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test's params: []
+27903 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testGroupModification' stopped
+27904 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testGroupDeletion' started..
+27905 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test's params: []
+28876 [Test worker] INFO  c.c.addressbook.tests.TestBase - Test 'testGroupDeletion' stopped
