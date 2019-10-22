@@ -3,9 +3,7 @@
 <suite name="Suite1" verbose="1" >
     <test name="Groups" >
         <classes>
-            <class name="com.course_java_for_testers.addressbook.tests.GroupCreationTests" />
             <class name="com.course_java_for_testers.addressbook.tests.GroupModificationTests" />
-            <class name="com.course_java_for_testers.addressbook.tests.GroupDeletionTests" />
         </classes>
     </test>
 </suite>
