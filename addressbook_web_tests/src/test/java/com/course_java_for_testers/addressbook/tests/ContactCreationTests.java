@@ -17,7 +17,7 @@ public class ContactCreationTests extends TestBase {
         app.getNavigationHelper().gotoHomePage();
         ContactList contactListBefore = app.getContactHelper().getContactList();
         app.getContactHelper().gotoCreateNewContact();
-        File photo = new File("src/test/resources/image.png");
+        File photo = new File("src/test/resources/files/image.png");
         NewContactData createdContact = new NewContactData()
                 .withFirstname("testname")
                 .withLastname("testlastname")
