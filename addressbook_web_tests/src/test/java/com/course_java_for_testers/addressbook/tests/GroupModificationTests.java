@@ -15,7 +15,7 @@ public class GroupModificationTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-       // app.getNavigationHelper().gotoGroupPage();
+        app.getNavigationHelper().gotoGroupPage();
         if (!app.getGroupHelper().isGroupPresent()) {
             app.getGroupHelper().createGroup(new GroupData()
                     .withName("test1")
